@@ -27,11 +27,13 @@ app.post("/users", (req, res) => {
 
 app.get("/users", (req, res) => {
     try {
-        res.json(users)
-        res.status(200).json({ message: "가져오기성공" })
+        res.status(200).json({
+            message: "가져오기 성공",
+            users
+        })
     } catch (error) {
-        console.log("fail", error)
-        res.status(500).json({ message: "fail" })
+        console.log("조회중 오류", error)
+        res.status(500).json({ message: "서버 오류 발생" })
     }
 })
 
